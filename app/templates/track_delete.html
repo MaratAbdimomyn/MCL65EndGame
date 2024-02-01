@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h3>Удалить {{ track_delete_confirm.title }}?</h3>
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit">Удалить</button>
+    </form>
+{% endblock %}

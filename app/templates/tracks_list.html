@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h3>Список публикаций</h3>
+<ul class="home_grid">
+    {% for track in tracks %}
+    <div class="home_grid_elements">
+        <div style="display: flex; flex-direction: row; justify-content: end; width: 94%; margin-top: 3px;">
+            {% if track.has_like %}
+                <form action="{% url 'like_delete' track.id %}" method="post">
+                    {% csrf_token %}
+                    <button class="positive_like_button" type="submit"><img class="positive_like_image" src="../../static/images/icons850positive.png" alt=""></button>
+                </form>
+            {% else %}
+                <form action="{% url 'like_create' track.id %}" method="post">
+                    {% csrf_token %}
+                    <button class="negative_like_button" type="submit"><img class="negative_like_image" src="../../static/images/icons850negative.png" alt=""></button>
+                </form>
+            {% endif %}
+        </div>
+        <a href={% url 'track_about' track.pk %}>
+            <div class="in_home_grid_elements">
+                <li style="font-size: larger;"><b>{{ track.song }}</b></li>
+                <li>{{ track.performer }}</li>
+                <img class="home_images" src="{{ track.image.url }}" alt="track_image">
+            </div>
+            </a>
+    </div>
+    {% endfor %}
+</ul>
+<a href={% url 'track_create' %}>Добавить трек</a>
+{% endblock %}

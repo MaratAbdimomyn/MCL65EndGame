@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h3>Самые популярные треки</h3>
+<ul class="home_grid" style="display: flex; flex-direction: column;">
+    {% for track in tracks_top %}
+    <div><h1 style="font-family: Calibri; color: white;">{{ track.num_likes }} голосов</h1></div>
+        <div class="home_grid_elements" >
+            <div class="in_home_grid_elements" style="margin-top: 20px;">
+                <li style="font-size: larger;"><b>{{ track.song }}</b></li>
+                <li>{{ track.performer }}</li>
+                <img class="home_images" src="{{ track.image.url }}" alt="track_image">
+            </div>
+        </div>
+    {% endfor %}
+</ul>
+{% endblock %}

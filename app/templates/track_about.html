@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h3>{{ track.song }}</h3>
+        <ul>
+            <li>Исполнитель: {{ track.performer }}</li>
+            <li>Год: {{ track.year }}</li>
+        </ul>
+        <img src="{{ track.image.url }}" alt="track_image">
+{% endblock %}

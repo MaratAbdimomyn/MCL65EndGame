@@ -1,0 +1,126 @@
+body {
+    background-color: skyblue;
+    margin: 0px;
+    padding: 0px;
+}
+
+li {
+    font-family: Calibri;
+    color: sienna;
+    list-style-type: none;
+    
+}
+
+a {
+    text-decoration: none;
+}
+
+.navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 200px;
+    width: 100%;
+    background-color: rgb(166, 23, 23);
+    background-image: url('../../static/images/miui\ 01.jpg');
+    background-size: cover;
+}
+
+.navbar_nav {
+    display: flex;
+    flex-direction: row;
+    justify-content:space-around;
+    align-items: center;
+}
+
+.navbar_items {
+    font-family: Arial;
+    color: white;
+    text-decoration: none;
+    opacity: 100%;
+    margin-right: 40px;
+}
+
+.home_grid {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.home_grid_elements {
+    background-color: white;
+    width: 220px;
+    height: 220px;
+    border: 1px solid white;
+    border-radius: 10px;
+    margin: 20px;
+    flex-wrap: wrap;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+}
+
+.home_images {
+    width: 115px;
+    height: 115px;
+    border-radius: 10px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    object-fit: cover;
+    margin-top: 15px;
+}
+
+.in_home_grid_elements {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.track_link {
+    color: white;
+    text-decoration: none;
+    font-family: Arial;
+}
+
+.positive_like_button {
+    background-color: rgb(189, 224, 255);
+    border-radius: 8px;
+    border: none;
+    margin: 2px;
+}
+
+.positive_like_image {
+    margin-top: 1px;
+    width: 20px;
+    height: 20px;
+}
+
+.negative_like_button {
+    background-color: rgb(189, 224, 255);
+    border-radius: 8px;
+    border: none;
+    margin: 2px;
+}
+
+.negative_like_image {
+    margin-top: 1px;
+    width: 20px;
+    height: 20px;
+}
+
+.logout {
+    font-family: Calibri;
+    border: none;
+    background: none;
+    color: white;
+    font-size: larger;
+    margin-right: 40px;
+    position: relative;
+    bottom: 1px;
+}

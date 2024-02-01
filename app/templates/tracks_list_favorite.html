@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h3>Избранные треки</h3>
+    {% if favorite_tracks %}
+
+            <ul class="home_grid">
+            {% for i in favorite_tracks %}
+            <div class="home_grid_elements">
+            <div class="in_home_grid_elements" style="margin-top: 20px;">
+                <li style="font-size: larger;"><b>{{ i.track.song }}</b></li>
+                <li>{{ i.track.performer }}</li>
+                <img class="home_images" src="{{ i.track.image.url }}" alt="track_image">
+            </div>
+        </div>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Нет избранных треков</p>
+    {% endif %}
+{% endblock %}
