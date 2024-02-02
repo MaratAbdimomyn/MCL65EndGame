@@ -8,6 +8,7 @@ from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Count
 from django.contrib.auth import authenticate, login
+from django.http import Http404
 from .models import *
 from .forms import *
 
@@ -148,4 +149,9 @@ class TrackDeleteView(DeleteView):
     template_name = 'track_delete.html'
     success_url = reverse_lazy('tracks_list')
     context_object_name = 'track_delete_confirm'
+
+    def dispatch(self, request, *args, **kwargs):
+        if self.get_object().author != self.request.user:
+            raise Http404("Вы не можете удалить этот трек")
+        return super().dispatch(request, *args, **kwargs)
 

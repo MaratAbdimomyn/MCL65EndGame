@@ -1,9 +1,18 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h3>Удалить {{ track_delete_confirm.title }}?</h3>
-    <form method="POST">
+
+<div class="top_list_header">
+    <h1 class="top_list_item">Удалить {{ track_delete_confirm.song }}?</h1>
+</div>
+
+<div style="display: flex; flex-direction: row; justify-content: center;">
+    <form style="height: 300px;" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
-        <button type="submit">Удалить</button>
+        <div class="track_create_button_block">
+            <button class="track_create_button" type="submit">Удалить</button>
+        </div>
     </form>
+</div>
+
 {% endblock %}

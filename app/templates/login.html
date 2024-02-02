@@ -1,12 +1,19 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div>
-    <h3>Login</h3>
-    <form method="POST">
+
+<div class="top_list_header">
+    <h1 class="top_list_item">Войти на сайт</h1>
+</div>
+
+<div style="display: flex; flex-direction: row; justify-content: center;">
+    <form class="track_create_form" style="height: 200px;" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Вход</button>
+        <div class="track_create_button_block">
+            <button class="track_create_button" type="submit">Вход</button>
+        </div>
     </form>
 </div>
+
 {% endblock %}

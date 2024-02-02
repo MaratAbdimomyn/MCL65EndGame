@@ -11,4 +11,4 @@ class SignUpForm(UserCreationForm):
 class TrackCreateForm(forms.ModelForm):
     class Meta:
         model = Track
-        fields = ['performer', 'coperformer', 'song', 'year', 'image', 'author']
+        fields = ['performer', 'coperformer', 'song', 'year', 'image']
