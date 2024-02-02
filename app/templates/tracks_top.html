@@ -1,17 +1,27 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h3>Самые популярные треки</h3>
-<ul class="home_grid" style="display: flex; flex-direction: column;">
-    {% for track in tracks_top %}
-    <div><h1 style="font-family: Calibri; color: white;">{{ track.num_likes }} голосов</h1></div>
-        <div class="home_grid_elements" >
-            <div class="in_home_grid_elements" style="margin-top: 20px;">
-                <li style="font-size: larger;"><b>{{ track.song }}</b></li>
-                <li>{{ track.performer }}</li>
-                <img class="home_images" src="{{ track.image.url }}" alt="track_image">
-            </div>
-        </div>
-    {% endfor %}
-</ul>
+<div class="top_list_header">
+    <h1 class="top_list_item">Топ треков</h1>
+</div>
+<div class="home_grid">
+    <ul>
+        <li class="top_list_saibal_header">
+            <span class="top_list_item" style="font-size: large;">Трек</span>
+            <span style="margin-right: 23px;"><img class="positive_like_image" src="../../static/images/icons850positive.png" alt=""></span>
+        </li>
+        {% for track in tracks_top %}
+        <li style="display: flex; width: 100%;">
+            <span class="top_song_block">
+                <div style="display: flex; flex-direction: column; margin-left: 10px;">
+                    <span><b>{{ track.song }}</b></span>
+                    <span>{{ track.performer }}</span>
+                </div>
+                <img class="top_image" src="{{ track.image.url }}" alt="track_image">
+            </span>
+            <span class="sum_like_block">{{ track.num_likes }}</span>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
 {% endblock %}

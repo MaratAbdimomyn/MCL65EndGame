@@ -1,18 +1,17 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="track_list_header">
-    <h1 class="new_tracks">Новые треки</h1>
-</div>
 
-<div class="pagination_block">
-    <span class="pagination_page">{{ page_obj.number }}/{{ page_obj.paginator.num_pages }}</span>
-    {% if page_obj.has_previous %}
-        <a href="?page={{ page_obj.previous_page_number }}"><img class="arrow" src="../../static/images/icons8left.png" alt=""></a>
-    {% endif %}
-    {% if page_obj.has_next %}
-        <a href="?page={{ page_obj.next_page_number }}"><img class="arrow" src="../../static/images/icons8right.png" alt=""></a>
-    {% endif %}
+<ul class="performers_block">
+    {% for performer in all_performers %}
+        <a href="tracks_only_list?performer={{ performer }}">
+            <li class="performers">{{ performer }}</li>
+        </a>
+    {% endfor %}
+</ul>
+
+<div class="track_list_header">
+    <h1 class="new_tracks">Все треки</h1>
 </div>
 
 <ul class="home_grid">
@@ -43,19 +42,4 @@
     {% endfor %}
 </ul>
 
-<div style="display: flex; flex-direction: row; justify-content: center;">
-    <a class="create_track_button" href={% url 'track_create' %}>Добавить трек</a>
-</div>
-
-<div class="track_list_header">
-    <h1 class="new_tracks">Исполнители</h1>
-</div>
-
-<ul class="performers_block">
-    {% for performer in all_performers %}
-        <a href="tracks_only_list?performer={{ performer }}">
-            <li class="performers">{{ performer }}</li>
-        </a>
-    {% endfor %}
-</ul>
 {% endblock %}

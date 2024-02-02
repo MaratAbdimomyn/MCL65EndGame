@@ -19,8 +19,7 @@
         <a href={% url 'tracks_top' %} class="navbar_items">Рейтинг</a>
         <a href={% url 'tracks_list_favorite' %} class="navbar_items">Избранное</a>
     {% if request.user.is_authenticated %}
-        <p class="navbar_items">Треки</p>
-        <p class="navbar_items">Исполнители</p>
+        <a href={% url 'tracks_only_list' %} class="navbar_items">Треки</a>
         <form action="{% url 'logout' %}" method="post">
             {% csrf_token %}
             <button class="logout" type="submit">Выход</button>
@@ -36,8 +35,10 @@
     {% block content %}
 
     {% endblock %}
-<footer>
-    <p>Уот так уот</p>
+<footer class="footer_block">
+    <div class="footer">
+        <p>Уот так уот. 2024</p>
+    </div>
 </footer>
 </body>
 

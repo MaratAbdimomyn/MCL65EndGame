@@ -1,3 +1,5 @@
+from typing import Any
+from django.db.models.query import QuerySet
 from django.shortcuts import render, redirect
 from django.views import View
 from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView, TemplateView
@@ -28,6 +30,7 @@ class TracksListView(ListView):
     model = Track
     template_name = 'tracks_list.html'
     context_object_name = 'tracks'
+    paginate_by = 5
 
     def get_queryset(self):
         return Track.objects.order_by('song')
@@ -41,6 +44,33 @@ class TracksListView(ListView):
         else:
             for track in context['tracks']:
                 track.has_like = False
+        all_performers = Track.objects.values_list('performer', flat=True).distinct()
+        context['all_performers'] = all_performers.order_by('performer')
+        return context
+
+class OnlyTracksListView(ListView):
+    model = Track
+    template_name = 'tracks_only_list.html'
+    context_object_name = 'tracks'
+
+    def get_queryset(self):
+        if self.request.GET.get("performer"):
+            performer_name = self.request.GET['performer']
+            return Track.objects.filter(performer__icontains=performer_name)
+        else:
+            return Track.objects.order_by('song')
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        user = self.request.user
+        if user.is_authenticated:
+            for track in context['tracks']:
+                track.has_like = user.like_set.filter(track=track).exists()
+        else:
+            for track in context['tracks']:
+                track.has_like = False
+        all_performers = Track.objects.values_list('performer', flat=True).distinct()
+        context['all_performers'] = all_performers
         return context
 
 class CreateLikeView(LoginRequiredMixin, View):
@@ -50,7 +80,7 @@ class CreateLikeView(LoginRequiredMixin, View):
         if request.user.is_authenticated:
             track = Track.objects.get(pk=track_id)
             Like.objects.create(user=request.user, track=track)
-        return redirect('tracks_list')
+        return redirect(request.META.get('HTTP_REFERER', 'tracks_list'))
 
 class DeleteLikeView(LoginRequiredMixin, View):
     login_url = reverse_lazy('login')
@@ -62,15 +92,7 @@ class DeleteLikeView(LoginRequiredMixin, View):
                 like.delete()
             except Like.DoesNotExist:
                 pass
-        return redirect('tracks_list')
-
-"""    def get_(self, request, id):
-        song = Track.objects.get(id=id)
-        like = Like.objects.filter(user=request.user, track=song)
-
-        if not like.exists():
-            Like.objects.create(user=request.user, track=song, quantity=1)
-            print('Hello')"""
+        return redirect(request.META.get('HTTP_REFERER', 'tracks_list'))
 
 class FavoriteTracksListView(LoginRequiredMixin, View):
     login_url = reverse_lazy('login')
@@ -124,6 +146,6 @@ class TrackDetailView(DetailView):
 class TrackDeleteView(DeleteView):
     model = Track
     template_name = 'track_delete.html'
-    success_url = reverse_lazy('track_list')
+    success_url = reverse_lazy('tracks_list')
     context_object_name = 'track_delete_confirm'
 

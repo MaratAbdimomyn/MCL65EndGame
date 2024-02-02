@@ -2,13 +2,13 @@ body {
     background-color: skyblue;
     margin: 0px;
     padding: 0px;
+    height: 100%;
 }
 
 li {
     font-family: Calibri;
     color: sienna;
     list-style-type: none;
-    
 }
 
 a {
@@ -45,8 +45,10 @@ a {
 .home_grid {
     display: flex;
     flex-direction: row;
-    align-items: flex-start;
+    justify-content: center;
     flex-wrap: wrap;
+    margin: 0%;
+    padding: 0px;
 }
 
 .home_grid_elements {
@@ -88,6 +90,31 @@ a {
     font-family: Arial;
 }
 
+.track_list_header {
+    display: flex;
+    flex-direction: row;
+    margin-top: 30px;
+}
+
+.pagination_block {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    width: 91%;
+}
+
+.pagination_page {
+    margin-right: 10px;
+    font-family: Calibri;
+    color: white;
+    font-size: larger;
+}
+
+.arrow {
+    width: 25px;
+    height: 25px;
+}
+
 .positive_like_button {
     background-color: rgb(189, 224, 255);
     border-radius: 8px;
@@ -123,4 +150,208 @@ a {
     margin-right: 40px;
     position: relative;
     bottom: 1px;
+}
+
+.new_tracks {
+    font-family: Calibri;
+    color: white;
+    margin: 0px;
+    position: relative;
+    left: 8.6%
+}
+
+.create_track_button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 180px;
+    height: 50px;
+    border-radius: 5px;
+    background-color: rgb(59, 203, 129);
+    color: white;
+    text-decoration: none;
+    font-family: Calibri;
+    font-size: larger;
+}
+
+.footer_block {
+    display: flex;
+    margin-top: 200px;
+}
+
+.footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    width: 100%;
+    background-color: white;
+    font-family: Calibri;
+    color: blue;
+}
+
+.track_create_form {
+    width: 420px;
+    height: 360px;
+    background-color: white;
+    border-radius: 10px;
+    font-family: Calibri;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    padding: 30px;
+}
+
+input {
+    width: 240px;
+    border: none;
+    border-bottom: solid 1px;
+}
+
+.track_create_button {
+    background-color: coral;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    padding: 10px;
+}
+
+.track_create_button_block {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    position: relative;
+    top: 10px;
+    width: 100%;
+}
+
+.track_about_page {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.track_about_block {
+    width: 420px;
+    height: 360px;
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    font-family: Calibri;
+}
+
+.track_about_image {
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
+}
+
+.track_about_button_block {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.update_button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 40px;
+    border-radius: 5px;
+    background-color: rgb(81, 59, 203);
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    font-family: Calibri;
+    font-size: larger;
+}
+
+.delete_button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 40px;
+    border-radius: 5px;
+    background-color: rgb(203, 100, 59);
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    font-family: Calibri;
+    font-size: larger;
+}
+
+.performers {
+    padding: 10px;
+    margin-right: 20px;
+    margin-top: 10px;
+    background-color: white;
+    color: rgb(74, 74, 95);
+    border-radius: 10px;
+}
+
+.performers_block {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 0%;
+    padding: 0px;
+    margin-top: 20px;
+}
+
+.top_song_block {
+    width: 400px;
+    height: 50px;
+    background-color: white;
+    border-radius: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sum_like_block {
+    width: 50px;
+    height: 50px;
+    background-color: white;
+    border-radius: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.top_image {
+    width: 35px;
+    height: 35px;
+    border-radius: 10px;
+    margin-right: 10px;
+}
+
+.top_list_header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.top_list_item {
+    font-family: Calibri;
+    color: white;
+}
+
+.top_list_saibal_header {
+    display: flex;
+    flex-direction: row;
+    height: 30px;
+    margin: 5px;
+    justify-content: space-between;
 }

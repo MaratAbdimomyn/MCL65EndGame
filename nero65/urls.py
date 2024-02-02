@@ -7,6 +7,7 @@ from app.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', TracksListView.as_view(), name='tracks_list'),
+    path('tracks_only_list', OnlyTracksListView.as_view(), name='tracks_only_list'),
     path('signup/', SignUpView.as_view(), name='signup'),
     path('login/', Login.as_view(), name='login'),
     path('logout/', Logout.as_view(), name='logout'),
