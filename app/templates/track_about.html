@@ -3,12 +3,23 @@
 {% block content %}
 <div class="track_about_page">
     <div class="track_about_block">
-        <h3 style="margin-top: 0px;">{{ track.song }}</h3>
-            <ul style="position: relative; right: 40px;">
+        
+            
+        <div style="display: flex; flex-direction: row; justify-content: space-between;">
+            <div>
+            <h2 style="margin-top: 0px;">{{ track.song }}</h2>
+            <ul style="position: relative; right: 40px; margin-top: 20px;">
                 <li>Исполнитель: {{ track.performer }}</li>
                 <li>Год: {{ track.year }}</li>
             </ul>
+        </div>
+
             <img class="track_about_image" src="{{ track.image.url }}" alt="track_image">
+        </div>
+
+            <audio style="margin-top: 30px; width: 400px;" controls>
+                <source src="../../static/music/Derezzed.mp3">
+            </audio>
             <div class="track_about_button_block">
                 <a class="update_button" href={% url 'track_update' track.pk %}>Редактировать</a>
                 <a class="delete_button" href={% url 'track_delete' track.pk %}>Удалить</a>

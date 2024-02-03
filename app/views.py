@@ -42,6 +42,7 @@ class TracksListView(ListView):
         if user.is_authenticated:
             for track in context['tracks']:
                 track.has_like = user.like_set.filter(track=track).exists()
+                print(user.like_set.all())
         else:
             for track in context['tracks']:
                 track.has_like = False
